@@ -102,9 +102,10 @@
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
         $(function () {
+            var nickname = prompt('What is your name?');
             var socket = io();
             $('form').submit(function () {
-                socket.emit('chat message', $('#m').val());
+                socket.emit('chat message', nickname + ': ' + $('#m').val());
                 $('#m').val('');
                 return false;
             });
