@@ -13,7 +13,7 @@ body {
   font-size: 14px;
   margin: 0;
   padding: 0;
-  transition: cubic-bezier(0.19, 1, 0.22, 1) 10000ms; }
+  transition: cubic-bezier(0.19, 1, 0.22, 1) 50000ms; }
 
 form {
   background: #252525;
