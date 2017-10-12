@@ -1,0 +1,22 @@
+{
+  "name": "socketiotests",
+  "version": "1.0.0",
+  "description": "A playground for Socket.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Working\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshuapbritz/socketiotests.git"
+  },
+  "author": "Joshua Britz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshuapbritz/socketiotests/issues"
+  },
+  "homepage": "https://github.com/joshuapbritz/socketiotests#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
