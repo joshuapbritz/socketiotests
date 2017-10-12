@@ -127,9 +127,14 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-        var nickname = prompt('What is your name?');
+        var nickname;
         $(function () {
             var socket = io();
+
+            nickname = getNickname().then(function (val) {
+                socket.emit('connect', val);
+            });
+
             $('form').submit(function () {
                 socket.emit('chat message', { user: nickname, message: $('#m').val() });
                 $('#m').val('');
@@ -162,6 +167,20 @@
                 }
             })
         });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var socket = io();
+
+            socket.on('connect', function (val) {
+                if (val !== nickname) {
+                    console.log(val + ' connected');
+                }
+            });
+        })
+
+        async function getNickname() {
+            return prompt('What is your name?');
+        }
     </script>
 </head>
 
