@@ -120,5 +120,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById(
             'g6d7gd6d7239dg2hj9238hd938hd'
         ).style.backgroundColor = color;
+        document.getElementById('color').value = color;
     });
 });
