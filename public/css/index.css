@@ -57,7 +57,8 @@ form button:hover {
 #messages {
   list-style-type: none;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  padding-top: 40px; }
 #messages li {
   padding: 10px 20px;
   position: relative;
