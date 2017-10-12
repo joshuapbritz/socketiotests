@@ -3,7 +3,8 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var db = require('diskdb');
-db = db.connect('./DB', ['chats']);
+db = db.connect('./DB', ['chats', 'chatBKP']);
+var fs = require('fs');
 
 app.use(express.static('public'));
 
@@ -21,7 +22,7 @@ io.on('connection', function(socket) {
     console.log('Connected');
 
     socket.on('chat message', function(msg) {
-        console.log('message: ' + msg);
+        console.log('message: ' + msg.message);
         msg.timestamp = dater();
         db.loadCollections(['chats']);
         var older = db.chats.save(msg);
@@ -39,7 +40,7 @@ io.on('connection', function(socket) {
 
 var port = process.env.PORT || 1232;
 http.listen(port, function() {
-    console.log(`Server started at - http://localhost:${port}`);
+    console.log(`Server started at - http://localhost:${port} [${dater()}]`);
 });
 
 Date.prototype.addHours = function(h) {
@@ -62,3 +63,17 @@ function purge(array) {
     worker = worker.slice(0, 20);
     return worker.reverse();
 }
+
+var time = 300000;
+
+setInterval(function() {
+    db.loadCollections(['chats']);
+    var chats = db.chats.find();
+    var dataObject = {
+        data: chats,
+        stamp: new Date().toDateString() + ` [${dater()}]`,
+    };
+    fs.writeFile('./DB/chatBKP.json', JSON.stringify(dataObject), function() {
+        console.log('Saved ' + dataObject.stamp);
+    });
+}, time);
