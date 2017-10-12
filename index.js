@@ -24,8 +24,13 @@ http.listen(port, function() {
     console.log(`Server started at - http://localhost:${port}`);
 });
 
+Date.prototype.addHours = function(h) {
+    this.setHours(this.getHours() + h);
+    return this;
+};
+
 function dater() {
-    var date = new Date();
+    var date = new Date().addHours(2);
     var str = timer(date.getHours()) + ':' + timer(date.getMinutes());
     return str;
 }
