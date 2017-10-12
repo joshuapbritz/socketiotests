@@ -128,11 +128,10 @@
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
         var nickname;
+        var socket = io();
         $(function () {
-            var socket = io();
-
             nickname = getNickname(function (val) {
-                socket.emit('connect', val);
+                console.log('Connected as ' + val);
             });
 
             $('form').submit(function () {
@@ -146,7 +145,6 @@
             });
         });
         document.addEventListener('DOMContentLoaded', function () {
-            var socket = io();
             var m = document.getElementById('m');
             m.addEventListener('keyup', function () {
                 if (m.value !== '') {
@@ -168,20 +166,17 @@
             })
         });
 
-        document.addEventListener('DOMContentLoaded', function () {
-            var socket = io();
-
-            socket.on('connect', function (val) {
-                if (val !== nickname) {
-                    console.log(val + ' connected');
-                }
-            });
-        })
-
         function getNickname(cb) {
-            var call = prompt('What is your name?');
-            cb(call);
-            return call;
+            var localName = localStorage.getItem('username');
+            if (localName) {
+                cb(localName);
+                return localName;
+            } else {
+                var call = prompt('What is your name?');
+                localStorage.setItem('username', call);
+                cb(call);
+                return call;
+            }
         }
     </script>
 </head>
