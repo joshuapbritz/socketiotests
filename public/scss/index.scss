@@ -153,3 +153,33 @@ form {
     height: auto;
     background-color: #fff;
 }
+
+.change-color-btn {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: auto;
+    height: 40px;
+
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    #color {
+        border: none;
+        height: 100%;
+        width: 40px;
+        float: left;
+        display: block;
+    }
+
+    #color-btn {
+        height: 100%;
+        width: 60px;
+        float: left;
+        border: none;
+        display: block;
+    }
+}

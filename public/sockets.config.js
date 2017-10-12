@@ -72,9 +72,19 @@ function onceConnected() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+            var resp = JSON.parse(this.responseText);
             var messages = document.getElementById('messages');
 
-            var res = JSON.parse(this.responseText).data;
+            var res = resp.data;
+
+            if (resp.colors) {
+                document.body.style.backgroundColor = resp.colors;
+                document.getElementById(
+                    'g6d7gd6d7239dg2hj9238hd938hd'
+                ).style.backgroundColor =
+                    resp.colors;
+                document.getElementById('color').value = resp.colors;
+            }
 
             res.forEach(msg => {
                 var li = document.createElement('LI');
@@ -98,3 +108,17 @@ function onceConnected() {
     xhttp.open('POST', '/archives', true);
     xhttp.send();
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('color-btn').addEventListener('click', function() {
+        var color = document.getElementById('color').value;
+        socket.emit('colorchange', color);
+    });
+
+    socket.on('colorchange', function(color) {
+        document.body.style.backgroundColor = color;
+        document.getElementById(
+            'g6d7gd6d7239dg2hj9238hd938hd'
+        ).style.backgroundColor = color;
+    });
+});

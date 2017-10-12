@@ -3,7 +3,7 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var db = require('diskdb');
-db = db.connect('./DB', ['chats', 'chatBKP']);
+db = db.connect('./DB', ['chats', 'chatBKP', 'colors']);
 var fs = require('fs');
 
 var _ = require('./utils');
@@ -20,9 +20,10 @@ app.get('/sgm', function(req, res) {
 });
 
 app.post('/archives', function(req, res) {
-    db.loadCollections(['chats']);
+    db.loadCollections(['chats', 'colors']);
     var older = db.chats.find();
-    res.send({ data: purge(older) });
+    var color = db.colors.find();
+    res.send({ data: purge(older), colors: color[color.length - 1] });
 });
 
 io.on('connection', function(socket) {
@@ -46,6 +47,12 @@ io.on('connection', function(socket) {
 
     socket.on('scorechange', function(m) {
         io.emit('scorechange', m);
+    });
+
+    socket.on('colorchange', function(m) {
+        db.loadCollections(['colors']);
+        var older = db.colors.save(m);
+        io.emit('colorchange', m);
     });
 });
 

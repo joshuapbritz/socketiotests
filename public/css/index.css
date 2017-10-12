@@ -122,4 +122,27 @@ form button:hover {
   height: auto;
   background-color: #fff; }
 
+.change-color-btn {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: auto;
+  height: 40px; }
+.change-color-btn::after {
+  content: '';
+  display: table;
+  clear: both; }
+.change-color-btn #color {
+  border: none;
+  height: 100%;
+  width: 40px;
+  float: left;
+  display: block; }
+.change-color-btn #color-btn {
+  height: 100%;
+  width: 60px;
+  float: left;
+  border: none;
+  display: block; }
+
 /*# sourceMappingURL=index.css.map */
