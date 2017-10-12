@@ -15,6 +15,10 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/sgm', function(req, res) {
+    res.sendFile(__dirname + '/game.html');
+});
+
 app.post('/archives', function(req, res) {
     db.loadCollections(['chats']);
     var older = db.chats.find();
@@ -38,6 +42,10 @@ io.on('connection', function(socket) {
 
     socket.on('connect', function(m) {
         io.emit('connect', m);
+    });
+
+    socket.on('scorechange', function(m) {
+        io.emit('scorechange', m);
     });
 });
 

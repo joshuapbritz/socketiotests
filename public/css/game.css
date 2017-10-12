@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
+* {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+  outline: none;
+  user-select: none !important; }
+
+b {
+  font-weight: 700; }
+
+body {
+  font-size: 14px;
+  margin: 0;
+  padding: 0; }
+
+.outer {
+  width: 100%;
+  height: 100vh;
+  background-color: #555555; }
+
+.card {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vh;
+  box-shadow: 0px 0px 5px -2px #333333; }
+.card .dice {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  z-index: 100;
+  border: solid 1px #ddd; }
+.card .btn-roll {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  background-color: #ddd;
+  padding: 7px 15px;
+  cursor: pointer; }
+.card .player-0, .card .player-1 {
+  width: 50%;
+  height: 100%;
+  float: left;
+  background-color: #ffffff;
+  position: relative; }
+.card .player-0 .name, .card .player-1 .name {
+  text-align: center;
+  width: 100%;
+  height: auto;
+  letter-spacing: 2px; }
+.card .player-0 .global-score, .card .player-1 .global-score {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: #777777; }
+.card .player-0 .current-score, .card .player-1 .current-score {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
+  width: 100px;
+  background-color: tomato;
+  text-align: center;
+  padding: 20px;
+  color: #ffffff;
+  font-size: 1rem; }
+.card .player-0.active, .card .player-1.active {
+  background-color: #eee; }
+.card .player-0.active .name, .card .player-1.active .name {
+  text-decoration: underline tomato; }
+
+/*# sourceMappingURL=game.css.map */

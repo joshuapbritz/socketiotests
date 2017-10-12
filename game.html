@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+    </script>
+    <title>Secret Game</title>
+    <link rel="stylesheet" href="/css/game.css">
+</head>
+
+<body>
+
+    <div class="outer">
+        <div class="card">
+            <div class="player-0 active">
+                <h1 class="name" id="player-0-name">Player 1</h1>
+                <div class="global-score" id="score-0">0</div>
+                <div class="current-score" id="current-0">0</div>
+            </div>
+
+            <img src="/dice-1.png" class="dice">
+            <div class="btn-roll">Roll Dice</div>
+
+            <div class="player-1">
+                <h1 class="name" id="player-1-name">Player 2</h1>
+                <div class="global-score" id="score-1">0</div>
+                <div class="current-score" id="current-1">0</div>
+            </div>
+        </div>
+    </div>
+    <script src="/game.js"></script>
+</body>
+
+</html>

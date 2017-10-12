@@ -117,4 +117,9 @@ form button:hover {
   display: table;
   clear: both; }
 
+.card {
+  width: 100%;
+  height: auto;
+  background-color: #fff; }
+
 /*# sourceMappingURL=index.css.map */
