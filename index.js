@@ -46,11 +46,6 @@ http.listen(port, function() {
     console.log(`Server started at - http://localhost:${port} [${_.dater()}]`);
 });
 
-Date.prototype.addHours = function(h) {
-    this.setHours(this.getHours() + h);
-    return this;
-};
-
 function purge(array) {
     var worker = array.reverse();
     worker = worker.slice(0, 20);
