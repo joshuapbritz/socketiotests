@@ -94,7 +94,8 @@
             position: fixed;
             bottom: 70px;
             left: 0;
-            width: 60px;
+            min-width: 60px;
+            padding: 10px;
             height: 40px;
             display: none;
             align-items: center;
@@ -144,7 +145,7 @@
 <body>
     <ul id="messages"></ul>
 
-    <h1 class="typing">...</h1>
+    <span class="typing">...</span>
     <form action="">
         <input id="m" autocomplete="off" />
         <button>Send</button>
