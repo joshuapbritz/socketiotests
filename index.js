@@ -17,6 +17,10 @@ io.on('connection', function(socket) {
     socket.on('typing', function(m) {
         io.emit('typing', m);
     });
+
+    socket.on('connect', function(m) {
+        io.emit('connect', m);
+    });
 });
 
 var port = process.env.PORT || 3124;
