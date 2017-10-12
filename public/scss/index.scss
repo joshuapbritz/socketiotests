@@ -2,30 +2,30 @@
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
-  }
-  
-  b {
+}
+
+b {
     font-weight: 700;
-  }
-  
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
-  
-  body {
+}
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+
+body {
     font-size: 14px;
     margin: 0;
     padding: 0;
-  }
-  
-  form {
+}
+
+form {
     background: #252525;
     padding: 7px;
     position: fixed;
     bottom: 0;
     width: 100%;
     height: 50px;
-  }
-  
-  form input {
+}
+
+form input {
     width: 90%;
     float: left;
     height: 100%;
@@ -35,15 +35,15 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     text-indent: 10px;
-  }
-  
-  @media screen and (max-width: 850px) {
+}
+
+@media screen and (max-width: 850px) {
     form input {
         width: 80%;
     }
-  }
-  
-  form button {
+}
+
+form button {
     width: 10%;
     height: 100%;
     background-color: rgb(26, 129, 90);
@@ -55,31 +55,31 @@
     border: none;
     cursor: pointer;
     transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 100ms;
-  }
-  
-  @media screen and (max-width: 850px) {
+}
+
+@media screen and (max-width: 850px) {
     form button {
         width: 20%;
     }
-  }
-  
-  form button:hover {
+}
+
+form button:hover {
     text-indent: 10px;
-  }
-  
-  #messages {
+}
+
+#messages {
     list-style-type: none;
     margin: 0;
     padding: 0;
-  }
-  
-  #messages li {
+}
+
+#messages li {
     padding: 10px 20px;
     position: relative;
     background-color: #fff;
-  }
-  
-  #messages li .time {
+}
+
+#messages li .time {
     position: absolute;
     right: 5px;
     top: 50%;
@@ -94,18 +94,18 @@
     align-items: center;
     justify-content: center;
     padding: 0 15px;
-  }
-  
-  #messages li:nth-child(odd) {
+}
+
+#messages li:nth-child(odd) {
     background: #eee;
-  }
-  
-  #messages li:nth-child(odd) .time {
+}
+
+#messages li:nth-child(odd) .time {
     background: lightblue;
     color: #333;
-  }
-  
-  .typing {
+}
+
+.typing {
     position: fixed;
     bottom: 70px;
     left: 0;
@@ -116,10 +116,22 @@
     align-items: center;
     justify-content: center;
     background-color: #eee;
-  }
+}
 
-  .theme-dark {
-      body {
-          background-color: #252525;
-      }
-  }
+.theme-dark {
+    body {
+        background-color: #252525;
+    }
+}
+
+.container {
+    width: 70%;
+    height: auto;
+    margin: auto;
+
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
