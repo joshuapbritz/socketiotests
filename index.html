@@ -122,16 +122,18 @@
             var m = document.getElementById('m');
             m.addEventListener('keyup', function () {
                 if (m.value !== '') {
-                    socket.emit('typing', true);
+                    socket.emit('typing', nickname);
                 } else {
-                    socket.emit('typing', false);
+                    socket.emit('typing', '');
                 }
             });
             socket.on('typing', function (msg) {
+                var typing = document.querySelector('.typing');
                 if (msg) {
-                    document.querySelector('.typing').style.display = 'inline-flex';
+                    typing.innerHTML = msg + ' is typing';
+                    typing.style.display = 'inline-flex';
                 } else {
-                    document.querySelector('.typing').style.display = 'none';
+                    typing.style.display = 'none';
                 }
             })
         });
