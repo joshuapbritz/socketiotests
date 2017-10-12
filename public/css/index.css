@@ -17,8 +17,10 @@ form {
   padding: 7px;
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
-  height: 50px; }
+  height: 50px;
+  display: block; }
 
 form input {
   width: 90%;
@@ -61,7 +63,8 @@ form button:hover {
 #messages li {
   padding: 10px 20px;
   position: relative;
-  background-color: #fff; }
+  background-color: #fff;
+  margin: 10px 0; }
 
 #messages li .time {
   position: absolute;
