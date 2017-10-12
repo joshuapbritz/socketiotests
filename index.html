@@ -105,12 +105,12 @@
             var nickname = prompt('What is your name?');
             var socket = io();
             $('form').submit(function () {
-                socket.emit('chat message', nickname + ': ' + $('#m').val());
+                socket.emit('chat message', { user: nickname, message: $('#m').val() });
                 $('#m').val('');
                 return false;
             });
             socket.on('chat message', function (msg) {
-                $('#messages').append($('<li>').text(msg));
+                $('#messages').append($('<li>').html('<b>' + msg.user + '</b>' + msg.message));
             });
         });
         document.addEventListener('DOMContentLoaded', function () {
