@@ -22,7 +22,6 @@ form {
   width: 100%;
   height: 50px;
   display: block; }
-
 form input {
   width: 90%;
   float: left;
@@ -33,7 +32,6 @@ form input {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   text-indent: 10px; }
-
 @media screen and (max-width: 850px) {
   form input {
     width: 80%; } }
@@ -49,7 +47,6 @@ form button {
   border: none;
   cursor: pointer;
   transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 100ms; }
-
 @media screen and (max-width: 850px) {
   form button {
     width: 20%; } }
@@ -60,13 +57,16 @@ form button:hover {
   list-style-type: none;
   margin: 0;
   padding: 0; }
-
 #messages li {
   padding: 10px 20px;
   position: relative;
   background-color: #fff;
   margin: 10px 0; }
-
+#messages li:nth-child(odd) {
+  background: #eee; }
+#messages li:nth-child(odd) .time {
+  background: lightblue;
+  color: #333; }
 #messages li .time {
   position: absolute;
   right: 5px;
@@ -82,13 +82,6 @@ form button:hover {
   align-items: center;
   justify-content: center;
   padding: 0 15px; }
-
-#messages li:nth-child(odd) {
-  background: #eee; }
-
-#messages li:nth-child(odd) .time {
-  background: lightblue;
-  color: #333; }
 
 .typing {
   position: fixed;
