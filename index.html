@@ -153,8 +153,10 @@
             socket.on('typing', function (msg) {
                 var typing = document.querySelector('.typing');
                 if (msg) {
-                    typing.innerHTML = msg + ' is typing';
-                    typing.style.display = 'inline-flex';
+                    if (msg !== nickname) {
+                        typing.innerHTML = msg + ' is typing';
+                        typing.style.display = 'inline-flex';
+                    }
                 } else {
                     typing.style.display = 'none';
                 }
