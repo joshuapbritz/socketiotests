@@ -84,6 +84,21 @@
 
         #messages li {
             padding: 10px 20px;
+            position: relative;
+        }
+
+        #messages li .time {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: auto;
+            height: 100%;
+            background-color: #ff3333;
+            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         #messages li:nth-child(odd) {
@@ -116,7 +131,7 @@
                 return false;
             });
             socket.on('chat message', function (msg) {
-                $('#messages').append($('<li>').html('<b>' + msg.user + '</b>: ' + msg.message));
+                $('#messages').append($('<li>').html('<b>' + msg.user + '</b>: ' + msg.message + '<span class="time">' + msg.timestamp + '</span>'));
             });
         });
         document.addEventListener('DOMContentLoaded', function () {
