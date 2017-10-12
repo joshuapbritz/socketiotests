@@ -25,6 +25,10 @@ $(function() {
         time.textContent = msg.timestamp;
         time.classList.add('time');
         li.appendChild(time);
+        li.id = Date.now();
+        li.addEventListener('dblclick', function() {
+            console.log(this.id);
+        });
         messages.appendChild(li);
     });
 });
@@ -85,6 +89,10 @@ function onceConnected() {
                 time.textContent = el.timestamp;
                 time.classList.add('time');
                 li.appendChild(time);
+                li.id = Date.now();
+                li.addEventListener('dblclick', function() {
+                    console.log(this.id);
+                });
                 messages.appendChild(li);
             });
         }
