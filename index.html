@@ -111,6 +111,7 @@
             $('form').submit(function () {
                 socket.emit('chat message', { user: nickname, message: $('#m').val() });
                 $('#m').val('');
+                socket.emit('typing', '');
                 return false;
             });
             socket.on('chat message', function (msg) {
