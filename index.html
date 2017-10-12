@@ -141,7 +141,20 @@
                 return false;
             });
             socket.on('chat message', function (msg) {
-                $('#messages').append($('<li>').html('<b>' + msg.user + '</b>: ' + msg.message + '<span class="time">' + msg.timestamp + '</span>'));
+                var messages = document.getElementById('messages');
+
+                var li = document.createElement('LI');
+                var b = document.createElement('B');
+                b.textContent = msg.user + ': ';
+                li.appendChild(b);
+                var span = document.createElement('SPAN');
+                span.textContent = msg.message;
+                li.appendChild(span);
+                var time = document.createElement('SPAN');
+                time.textContent = msg.timestamp;
+                time.classList.add('time');
+                li.appendChild(time);
+                messages.appendChild(li);
             });
         });
         document.addEventListener('DOMContentLoaded', function () {
