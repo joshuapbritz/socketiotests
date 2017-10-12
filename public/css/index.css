@@ -62,7 +62,7 @@ form button:hover {
   padding: 10px 20px;
   position: relative;
   background-color: #fff;
-  margin: 15px 0; }
+  margin: 25px 0; }
 #messages li::after {
   content: '';
   display: table;
@@ -87,7 +87,7 @@ form button:hover {
   font-size: 90%;
   color: #333333;
   background-color: lightblue;
-  bottom: -20px;
+  bottom: 0;
   right: 0;
   display: inline-flex;
   align-items: center;
