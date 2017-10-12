@@ -9,11 +9,14 @@
     <style>
         * {
             box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
         }
+
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
 
         body {
             font-size: 14px;
-            font-family: 'Times New Roman', Times, serif;
             margin: 0;
             padding: 0;
         }
@@ -82,6 +85,18 @@
         #messages li:nth-child(odd) {
             background: #eee;
         }
+
+        .typing {
+            position: fixed;
+            bottom: 70px;
+            left: 0;
+            width: 60px;
+            height: 40px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background-color: #eee;
+        }
     </style>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
@@ -97,11 +112,31 @@
                 $('#messages').append($('<li>').text(msg));
             });
         });
+        document.addEventListener('DOMContentLoaded', function () {
+            var socket = io();
+            var m = document.getElementById('m');
+            m.addEventListener('keyup', function () {
+                if (m.value !== '') {
+                    socket.emit('typing', true);
+                } else {
+                    socket.emit('typing', false);
+                }
+            });
+            socket.on('typing', function (msg) {
+                if (msg) {
+                    document.querySelector('.typing').style.display = 'inline-flex';
+                } else {
+                    document.querySelector('.typing').style.display = 'none';
+                }
+            })
+        });
     </script>
 </head>
 
 <body>
     <ul id="messages"></ul>
+
+    <h1 class="typing">...</h1>
     <form action="">
         <input id="m" autocomplete="off" />
         <button>Send</button>

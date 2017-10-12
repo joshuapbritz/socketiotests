@@ -12,6 +12,10 @@ io.on('connection', function(socket) {
         console.log('message: ' + msg);
         io.emit('chat message', msg);
     });
+
+    socket.on('typing', function(m) {
+        io.emit('typing', m);
+    });
 });
 
 var port = process.env.PORT || 3124;
