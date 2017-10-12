@@ -54,11 +54,41 @@ function getNickname(cb) {
     var localName = localStorage.getItem('username');
     if (localName) {
         cb(localName);
+        onceConnected();
         return localName;
     } else {
         var call = prompt('What is your name?');
         localStorage.setItem('username', call);
         cb(call);
+        onceConnected();
         return call;
     }
+}
+
+function onceConnected() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var messages = document.getElementById('messages');
+
+            var res = JSON.parse(this.responseText).data;
+
+            res.forEach(el => {
+                var li = document.createElement('LI');
+                var b = document.createElement('B');
+                b.textContent = el.user + ': ';
+                li.appendChild(b);
+                var span = document.createElement('SPAN');
+                span.textContent = el.message;
+                li.appendChild(span);
+                var time = document.createElement('SPAN');
+                time.textContent = el.timestamp;
+                time.classList.add('time');
+                li.appendChild(time);
+                messages.appendChild(li);
+            });
+        }
+    };
+    xhttp.open('POST', '/archives', true);
+    xhttp.send();
 }
