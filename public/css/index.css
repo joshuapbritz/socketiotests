@@ -13,7 +13,7 @@ body {
   font-size: 14px;
   margin: 0;
   padding: 0;
-  transition: cubic-bezier(0.19, 1, 0.22, 1) 50000ms; }
+  transition: cubic-bezier(0.19, 1, 0.22, 1) 500000ms; }
 
 form {
   background: #252525;
@@ -24,7 +24,7 @@ form {
   width: 100%;
   height: 50px;
   display: block;
-  transition: cubic-bezier(0.19, 1, 0.22, 1) 50000ms; }
+  transition: cubic-bezier(0.19, 1, 0.22, 1) 500000ms; }
 form input {
   width: 90%;
   float: left;
