@@ -2,9 +2,11 @@ var db = require('diskdb');
 db = db.connect('./DB', ['chats', 'chatBKP']);
 var fs = require('fs');
 var _ = require('./utils');
+var chalk = require('chalk');
+var print = console.log;
 
 exports.bkp = function(time) {
-    console.log('Backup initialized');
+    print(chalk.magenta('Backup initialized'));
     setInterval(function() {
         db.loadCollections(['chats']);
         var chats = db.chats.find();
