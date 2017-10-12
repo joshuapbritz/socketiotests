@@ -62,27 +62,36 @@ form button:hover {
   padding: 10px 20px;
   position: relative;
   background-color: #fff;
-  margin: 10px 0; }
-#messages li:nth-child(odd) {
-  background: #eee; }
-#messages li:nth-child(odd) .time {
-  background: lightblue;
-  color: #333; }
-#messages li .time {
-  position: absolute;
-  right: 5px;
-  top: 50%;
-  bottom: 0;
-  width: auto;
-  margin-top: -11px;
-  height: 22px;
-  border-radius: 5px;
-  background-color: lightskyblue;
-  color: #fff;
-  display: inline-flex;
+  margin: 15px 0; }
+#messages li::after {
+  content: '';
+  display: table;
+  clear: both; }
+#messages li .user {
+  width: 70px;
+  height: 50px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 15px; }
+  font-weight: 700;
+  float: left; }
+#messages li .content {
+  width: calc(100% - 70px);
+  min-height: 50px;
+  float: left;
+  padding: 10px; }
+#messages li .time {
+  position: absolute;
+  width: 60px;
+  height: 20px;
+  font-size: 90%;
+  color: #333333;
+  background-color: lightblue;
+  bottom: -20px;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; }
 
 .typing {
   position: fixed;

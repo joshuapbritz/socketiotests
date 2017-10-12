@@ -15,20 +15,19 @@ $(function() {
         var messages = document.getElementById('messages');
 
         var li = document.createElement('LI');
-        var b = document.createElement('B');
-        b.textContent = msg.user + ': ';
+        var b = document.createElement('DIV');
+        b.textContent = msg.user;
+        b.className = 'user';
         li.appendChild(b);
-        var span = document.createElement('SPAN');
+        var span = document.createElement('DIV');
         span.textContent = msg.message;
+        span.className = 'content';
         li.appendChild(span);
         var time = document.createElement('SPAN');
         time.textContent = msg.timestamp;
         time.classList.add('time');
         li.appendChild(time);
         li.id = Date.now();
-        li.addEventListener('dblclick', function() {
-            this.outerHTML = '';
-        });
         messages.appendChild(li);
     });
 });
@@ -77,22 +76,21 @@ function onceConnected() {
 
             var res = JSON.parse(this.responseText).data;
 
-            res.forEach(el => {
+            res.forEach(msg => {
                 var li = document.createElement('LI');
-                var b = document.createElement('B');
-                b.textContent = el.user + ': ';
+                var b = document.createElement('DIV');
+                b.textContent = msg.user;
+                b.className = 'user';
                 li.appendChild(b);
-                var span = document.createElement('SPAN');
-                span.textContent = el.message;
+                var span = document.createElement('DIV');
+                span.textContent = msg.message;
+                span.className = 'content';
                 li.appendChild(span);
                 var time = document.createElement('SPAN');
-                time.textContent = el.timestamp;
+                time.textContent = msg.timestamp;
                 time.classList.add('time');
                 li.appendChild(time);
                 li.id = Date.now();
-                li.addEventListener('dblclick', function() {
-                    this.outerHTML = '';
-                });
                 messages.appendChild(li);
             });
         }
