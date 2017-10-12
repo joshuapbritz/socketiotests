@@ -131,7 +131,7 @@
         $(function () {
             var socket = io();
 
-            nickname = getNickname().then(function (val) {
+            nickname = getNickname(function (val) {
                 socket.emit('connect', val);
             });
 
@@ -178,8 +178,10 @@
             });
         })
 
-        async function getNickname() {
-            return prompt('What is your name?');
+        async function getNickname(cb) {
+            var call = prompt('What is your name?');
+            cb(call);
+            return call;
         }
     </script>
 </head>
