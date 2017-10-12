@@ -6,6 +6,9 @@ var db = require('diskdb');
 db = db.connect('./DB', ['chats', 'chatBKP']);
 var fs = require('fs');
 
+var _ = require('./utils');
+var besafe = require('./dbbkp');
+
 app.use(express.static('public'));
 
 app.get('/', function(req, res) {
@@ -23,7 +26,7 @@ io.on('connection', function(socket) {
 
     socket.on('chat message', function(msg) {
         console.log('message: ' + msg.message);
-        msg.timestamp = dater();
+        msg.timestamp = _.dater();
         db.loadCollections(['chats']);
         var older = db.chats.save(msg);
         io.emit('chat message', msg);
@@ -40,7 +43,7 @@ io.on('connection', function(socket) {
 
 var port = process.env.PORT || 1232;
 http.listen(port, function() {
-    console.log(`Server started at - http://localhost:${port} [${dater()}]`);
+    console.log(`Server started at - http://localhost:${port} [${_.dater()}]`);
 });
 
 Date.prototype.addHours = function(h) {
@@ -48,32 +51,10 @@ Date.prototype.addHours = function(h) {
     return this;
 };
 
-function dater() {
-    var date = new Date().addHours(2);
-    var str = timer(date.getHours()) + ':' + timer(date.getMinutes());
-    return str;
-}
-
-function timer(str) {
-    return ('0' + str).slice(-2);
-}
-
 function purge(array) {
     var worker = array.reverse();
     worker = worker.slice(0, 20);
     return worker.reverse();
 }
 
-var time = 300000;
-
-setInterval(function() {
-    db.loadCollections(['chats']);
-    var chats = db.chats.find();
-    var dataObject = {
-        data: chats,
-        stamp: new Date().toDateString() + ` [${dater()}]`,
-    };
-    fs.writeFile('./DB/chatBKP.json', JSON.stringify(dataObject), function() {
-        console.log('Saved ' + dataObject.stamp);
-    });
-}, time);
+besafe.bkp(300000);
