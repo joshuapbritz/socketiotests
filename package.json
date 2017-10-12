@@ -4,7 +4,8 @@
   "description": "A playground for Socket.io",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Working\""
+    "test": "echo \"Working\"",
+    "start": "node index"
   },
   "repository": {
     "type": "git",
