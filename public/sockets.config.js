@@ -27,7 +27,7 @@ $(function() {
         li.appendChild(time);
         li.id = Date.now();
         li.addEventListener('dblclick', function() {
-            console.log(this.id);
+            this.outerHTML = '';
         });
         messages.appendChild(li);
     });
@@ -91,7 +91,7 @@ function onceConnected() {
                 li.appendChild(time);
                 li.id = Date.now();
                 li.addEventListener('dblclick', function() {
-                    console.log(this.id);
+                    this.outerHTML = '';
                 });
                 messages.appendChild(li);
             });
